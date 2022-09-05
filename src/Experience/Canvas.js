@@ -30,12 +30,7 @@ export default class Canvas
         // wireframe: true,
         uniforms: {
           iResolution: { value: new THREE.Vector3(this.config.width, this.config.height, 1) },
-          uColor: { value: new THREE.Color(0x51b1f5) },
-          uLightPos: { value: new THREE.Vector3(0, 5, 3) }, // position of spotlight
-          uLightColor: { value: new THREE.Color(0xffffff) }, // default light color
-          uLightIntensity: { value: 0.7 }, // light intensity
-          uNoiseScale: { value: 0.8 }, // light intensity
-          uTime: { value: 0.0}
+          uTime: { value: 0.0 }
         }
       })
     }

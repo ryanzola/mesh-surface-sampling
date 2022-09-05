@@ -18,35 +18,13 @@ export default class World
         {
             if(_group.name === 'base')
             {
-                this.setLambert()
+                this.setCanvas()
             }
         })
     }
 
-    setLambert() {
-        // red
-        this.lambert1 = new Lambert({
-            color: new THREE.Color(0xEA3323),
-            position: new THREE.Vector3(-3, 0, 3)
-        })
-
-        // black
-        this.lambert2 = new Lambert({
-            color: new THREE.Color(0x111111),
-            position: new THREE.Vector3(0, 0, -3)
-        })
-
-        //blue
-        this.lambert3 = new Lambert({
-            color: new THREE.Color(0x51b1f5),
-            position: new THREE.Vector3(3, 0, 3)
-        })
-
-        console.log(this.lambert1.mesh)
-
-        this.sphereGroup = new THREE.Group()
-        this.scene.add(this.sphereGroup)
-        this.sphereGroup.add(this.lambert1.mesh, this.lambert2.mesh, this.lambert3.mesh)
+    setCanvas() {
+        this.canvas = new Canvas()
     }
 
     resize()
@@ -57,11 +35,6 @@ export default class World
     {
         if(this.canvas)
             this.canvas.update()
-
-        if(this.sphereGroup) {
-            this.sphereGroup.rotation.y += 0.005
-            this.sphereGroup.rotation.x += 0.002
-        }
     }
 
     destroy()
