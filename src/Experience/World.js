@@ -2,7 +2,6 @@ import * as THREE from 'three'
 
 import Experience from './Experience'
 import Canvas from './Canvas'
-import Lambert from './Lambert'
 
 export default class World
 {

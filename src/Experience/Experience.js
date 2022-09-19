@@ -1,4 +1,5 @@
 import * as THREE from 'three'
+import { Pane } from 'tweakpane'
 import Time from './Utils/Time.js'
 import Sizes from './Utils/Sizes.js'
 import Stats from './Utils/Stats.js'
