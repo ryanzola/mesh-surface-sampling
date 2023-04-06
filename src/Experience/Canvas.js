@@ -25,6 +25,7 @@ export default class Canvas
         this.setGeometry()
         this.setMaterial()
         this.setMesh()
+        // this.setDebugCube()
     }
 
     setFlowField() {
@@ -63,6 +64,17 @@ export default class Canvas
       this.model.geometry.setAttribute('aAlpha', this.attributes.alpha.attribute)
       this.model.geometry.setAttribute('aFboUv', this.flowField.fboUv.attribute)
       this.model.geometry.computeVertexNormals()
+    }
+
+    setDebugCube() {
+      const geo = new THREE.BoxGeometry(1, 1, 1)
+      const mat = new THREE.MeshBasicMaterial({
+        color: 0xff0000
+      })
+      const mesh = new THREE.Mesh(geo, mat)
+      mesh.position.set(0, 1, -3)
+
+      this.scene.add(mesh)
     }
 
     setMaterial() {

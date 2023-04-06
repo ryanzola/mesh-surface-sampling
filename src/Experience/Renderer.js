@@ -2,6 +2,7 @@ import * as THREE from 'three'
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js'
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js'
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js'
+import { VRButton } from 'three/addons/webxr/VRButton.js';
 
 import Experience from './Experience'
 
@@ -18,7 +19,8 @@ export default class Renderer
         this.scene = this.experience.scene
         this.camera = this.experience.camera
         
-        this.usePostprocess = true
+        this.usePostprocess = false
+        this.useXR = true
 
         this.setInstance()
         this.setPostProcess()
@@ -44,6 +46,7 @@ export default class Renderer
         this.instance.setSize(this.config.width, this.config.height)
         this.instance.setPixelRatio(this.config.pixelRatio)
 
+        
         // this.instance.physicallyCorrectLights = true
         // this.instance.gammaOutPut = true
         // this.instance.outputEncoding = THREE.sRGBEncoding
@@ -54,6 +57,11 @@ export default class Renderer
         // this.instance.toneMappingExposure = 1.3
 
         this.context = this.instance.getContext()
+
+        if(this.useXR) {
+            this.instance.xr.enabled = true
+            document.body.appendChild( VRButton.createButton( this.instance ) );
+        }
 
         // Add stats panel
         if(this.stats)

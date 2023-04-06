@@ -101,21 +101,25 @@ export default class Experience
 
     update()
     {
-        if(this.stats)
-            this.stats.update()
-        
-        this.camera.update()
+        if(this.renderer) {
+            this.renderer.instance.setAnimationLoop(() => {
+                if(this.stats)
+                    this.stats.update()
+            
+                this.camera.update()
+    
+            if(this.world)
+                this.world.update()
+            
 
-        if(this.world)
-            this.world.update()
-        
-        if(this.renderer)
-            this.renderer.update()
+                this.renderer.update()
+            })
+        }
 
-        window.requestAnimationFrame(() =>
-        {
-            this.update()
-        })
+        // window.requestAnimationFrame(() =>
+        // {
+            // this.update()
+        // })
     }
 
     resize()
